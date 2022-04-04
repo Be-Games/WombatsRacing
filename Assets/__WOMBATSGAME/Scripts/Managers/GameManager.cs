@@ -36,7 +36,10 @@ public class GameManager : MonoBehaviour
     [Header("Stadium Scene Stuff")] 
     public int charNumber = 1;                                                    //1= MM , 2 = DH , 3 = TO 
     public int podiumPos = 1;
-    
-    
+
+    public void setCharacter(int charNo)
+    {
+        charNumber = charNo;
+    }
 
 }

@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
-//using Coffee.UIEffects;
+using Coffee.UIEffects;
 using DG.Tweening;
 using PathCreation.Examples;
 using TMPro;
