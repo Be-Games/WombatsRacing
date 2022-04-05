@@ -57,7 +57,7 @@ public class GoogleAdMobController : MonoBehaviour
         // the next Update() loop.
         MobileAdsEventExecutor.ExecuteInUpdate(() =>
         {
-            RequestBannerAd();
+            //RequestBannerAd();
         });
     }
 
@@ -78,7 +78,7 @@ public class GoogleAdMobController : MonoBehaviour
         // Display the app open ad when the app is foregrounded.
         if (!paused)
         {
-            ShowAppOpenAd();
+            //ShowAppOpenAd();
         }
     }
 
@@ -86,101 +86,101 @@ public class GoogleAdMobController : MonoBehaviour
 
     #region BANNER ADS
 
-    public void RequestBannerAd()
-    {
-
-        // These ad units are configured to always serve test ads.
-#if UNITY_EDITOR
-        string adUnitId = "unused";
-#elif UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/6300978111";
-#elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/2934735716";
-#else
-        string adUnitId = "unexpected_platform";
-#endif
-
-        // Clean up banner before reusing
-        if (bannerView != null)
-        {
-            bannerView.Destroy();
-        }
-
-        // Create a 320x50 banner at top of the screen
-        bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Top);
-
-        // Add Event Handlers
-        bannerView.OnAdLoaded += (sender, args) => OnAdLoadedEvent.Invoke();
-        bannerView.OnAdFailedToLoad += (sender, args) => OnAdFailedToLoadEvent.Invoke();
-        bannerView.OnAdOpening += (sender, args) => OnAdOpeningEvent.Invoke();
-        bannerView.OnAdClosed += (sender, args) => OnAdClosedEvent.Invoke();
-
-        // Load a banner ad
-        bannerView.LoadAd(CreateAdRequest());
-    }
-
-    public void DestroyBannerAd()
-    {
-        if (bannerView != null)
-        {
-            bannerView.Destroy();
-        }
-    }
+//     public void RequestBannerAd()
+//     {
+//
+//         // These ad units are configured to always serve test ads.
+// #if UNITY_EDITOR
+//         string adUnitId = "unused";
+// #elif UNITY_ANDROID
+//         string adUnitId = "ca-app-pub-3940256099942544/6300978111";
+// #elif UNITY_IPHONE
+//         string adUnitId = "ca-app-pub-3940256099942544/2934735716";
+// #else
+//         string adUnitId = "unexpected_platform";
+// #endif
+//
+//         // Clean up banner before reusing
+//         if (bannerView != null)
+//         {
+//             bannerView.Destroy();
+//         }
+//
+//         // Create a 320x50 banner at top of the screen
+//         bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Top);
+//
+//         // Add Event Handlers
+//         bannerView.OnAdLoaded += (sender, args) => OnAdLoadedEvent.Invoke();
+//         bannerView.OnAdFailedToLoad += (sender, args) => OnAdFailedToLoadEvent.Invoke();
+//         bannerView.OnAdOpening += (sender, args) => OnAdOpeningEvent.Invoke();
+//         bannerView.OnAdClosed += (sender, args) => OnAdClosedEvent.Invoke();
+//
+//         // Load a banner ad
+//         bannerView.LoadAd(CreateAdRequest());
+//     }
+//
+//     public void DestroyBannerAd()
+//     {
+//         if (bannerView != null)
+//         {
+//             bannerView.Destroy();
+//         }
+//     }
 
     #endregion
 
     #region INTERSTITIAL ADS
 
-    public void RequestAndLoadInterstitialAd()
-    {
-       
-
-#if UNITY_EDITOR
-        string adUnitId = "unused";
-#elif UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712";
-#elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/4411468910";
-#else
-        string adUnitId = "unexpected_platform";
-#endif
-
-        // Clean up interstitial before using it
-        if (interstitialAd != null)
-        {
-            interstitialAd.Destroy();
-        }
-        interstitialAd = new InterstitialAd(adUnitId);
-
-        // Add Event Handlers
-        interstitialAd.OnAdLoaded += (sender, args) => OnAdLoadedEvent.Invoke();
-        interstitialAd.OnAdFailedToLoad += (sender, args) => OnAdFailedToLoadEvent.Invoke();
-        interstitialAd.OnAdOpening += (sender, args) => OnAdOpeningEvent.Invoke();
-        interstitialAd.OnAdClosed += (sender, args) => OnAdClosedEvent.Invoke();
-
-        // Load an interstitial ad
-        interstitialAd.LoadAd(CreateAdRequest());
-    }
-
-    public void ShowInterstitialAd()
-    {
-        if (interstitialAd != null && interstitialAd.IsLoaded())
-        {
-            interstitialAd.Show();
-        }
-        else
-        {
-           
-        }
-    }
-
-    public void DestroyInterstitialAd()
-    {
-        if (interstitialAd != null)
-        {
-            interstitialAd.Destroy();
-        }
-    }
+//     public void RequestAndLoadInterstitialAd()
+//     {
+//        
+//
+// #if UNITY_EDITOR
+//         string adUnitId = "unused";
+// #elif UNITY_ANDROID
+//         string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+// #elif UNITY_IPHONE
+//         string adUnitId = "ca-app-pub-3940256099942544/4411468910";
+// #else
+//         string adUnitId = "unexpected_platform";
+// #endif
+//
+//         // Clean up interstitial before using it
+//         if (interstitialAd != null)
+//         {
+//             interstitialAd.Destroy();
+//         }
+//         interstitialAd = new InterstitialAd(adUnitId);
+//
+//         // Add Event Handlers
+//         interstitialAd.OnAdLoaded += (sender, args) => OnAdLoadedEvent.Invoke();
+//         interstitialAd.OnAdFailedToLoad += (sender, args) => OnAdFailedToLoadEvent.Invoke();
+//         interstitialAd.OnAdOpening += (sender, args) => OnAdOpeningEvent.Invoke();
+//         interstitialAd.OnAdClosed += (sender, args) => OnAdClosedEvent.Invoke();
+//
+//         // Load an interstitial ad
+//         interstitialAd.LoadAd(CreateAdRequest());
+//     }
+//
+//     public void ShowInterstitialAd()
+//     {
+//         if (interstitialAd != null && interstitialAd.IsLoaded())
+//         {
+//             interstitialAd.Show();
+//         }
+//         else
+//         {
+//            
+//         }
+//     }
+//
+//     public void DestroyInterstitialAd()
+//     {
+//         if (interstitialAd != null)
+//         {
+//             interstitialAd.Destroy();
+//         }
+//     }
 
     #endregion
 
@@ -293,96 +293,96 @@ public class GoogleAdMobController : MonoBehaviour
 
     #region APPOPEN ADS
 
-    public void RequestAndLoadAppOpenAd()
-    {
-        
-#if UNITY_EDITOR
-        string adUnitId = "unused";
-#elif UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/3419835294";
-#elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/5662855259";
-#else
-        string adUnitId = "unexpected_platform";
-#endif
-        // create new app open ad instance
-        AppOpenAd.LoadAd(adUnitId, ScreenOrientation.Portrait, CreateAdRequest(), (appOpenAd, error) =>
-        {
-            if (error != null)
-            {
-                MobileAdsEventExecutor.ExecuteInUpdate(() => {
-                    
-                });
-                return;
-            }
-            MobileAdsEventExecutor.ExecuteInUpdate(() => {
-                
-            });
-            this.appOpenAd = appOpenAd;
-        });
-    }
-
-    public void ShowAppOpenAd()
-    {
-        if (isShowingAppOpenAd)
-        {
-            return;
-        }
-        if (appOpenAd == null)
-        {
-            return;
-        }
-        // Register for ad events.
-        this.appOpenAd.OnAdDidDismissFullScreenContent += (sender, args) =>
-        {
-            isShowingAppOpenAd = false;
-            MobileAdsEventExecutor.ExecuteInUpdate(() => {
-                Debug.Log("AppOpenAd dismissed.");
-                if (this.appOpenAd != null)
-                {
-                    this.appOpenAd.Destroy();
-                    this.appOpenAd = null;
-                }
-            });
-        };
-        this.appOpenAd.OnAdFailedToPresentFullScreenContent += (sender, args) =>
-        {
-            isShowingAppOpenAd = false;
-            var msg = args.AdError.GetMessage();
-            MobileAdsEventExecutor.ExecuteInUpdate(() => {
-                
-                if (this.appOpenAd != null)
-                {
-                    this.appOpenAd.Destroy();
-                    this.appOpenAd = null;
-                }
-            });
-        };
-        this.appOpenAd.OnAdDidPresentFullScreenContent += (sender, args) =>
-        {
-            isShowingAppOpenAd = true;
-            MobileAdsEventExecutor.ExecuteInUpdate(() => {
-                Debug.Log("AppOpenAd presented.");
-            });
-        };
-        this.appOpenAd.OnAdDidRecordImpression += (sender, args) =>
-        {
-            MobileAdsEventExecutor.ExecuteInUpdate(() => {
-                Debug.Log("AppOpenAd recorded an impression.");
-            });
-        };
-        this.appOpenAd.OnPaidEvent += (sender, args) =>
-        {
-            string currencyCode = args.AdValue.CurrencyCode;
-            long adValue = args.AdValue.Value;
-            string suffix = "AppOpenAd received a paid event.";
-            MobileAdsEventExecutor.ExecuteInUpdate(() => {
-                string msg = string.Format("{0} (currency: {1}, value: {2}", suffix, currencyCode, adValue);
-                
-            });
-        };
-        appOpenAd.Show();
-    }
+//     public void RequestAndLoadAppOpenAd()
+//     {
+//         
+// #if UNITY_EDITOR
+//         string adUnitId = "unused";
+// #elif UNITY_ANDROID
+//         string adUnitId = "ca-app-pub-3940256099942544/3419835294";
+// #elif UNITY_IPHONE
+//         string adUnitId = "ca-app-pub-3940256099942544/5662855259";
+// #else
+//         string adUnitId = "unexpected_platform";
+// #endif
+//         // create new app open ad instance
+//         AppOpenAd.LoadAd(adUnitId, ScreenOrientation.Portrait, CreateAdRequest(), (appOpenAd, error) =>
+//         {
+//             if (error != null)
+//             {
+//                 MobileAdsEventExecutor.ExecuteInUpdate(() => {
+//                     
+//                 });
+//                 return;
+//             }
+//             MobileAdsEventExecutor.ExecuteInUpdate(() => {
+//                 
+//             });
+//             this.appOpenAd = appOpenAd;
+//         });
+//     }
+//
+//     public void ShowAppOpenAd()
+//     {
+//         if (isShowingAppOpenAd)
+//         {
+//             return;
+//         }
+//         if (appOpenAd == null)
+//         {
+//             return;
+//         }
+//         // Register for ad events.
+//         this.appOpenAd.OnAdDidDismissFullScreenContent += (sender, args) =>
+//         {
+//             isShowingAppOpenAd = false;
+//             MobileAdsEventExecutor.ExecuteInUpdate(() => {
+//                 Debug.Log("AppOpenAd dismissed.");
+//                 if (this.appOpenAd != null)
+//                 {
+//                     this.appOpenAd.Destroy();
+//                     this.appOpenAd = null;
+//                 }
+//             });
+//         };
+//         this.appOpenAd.OnAdFailedToPresentFullScreenContent += (sender, args) =>
+//         {
+//             isShowingAppOpenAd = false;
+//             var msg = args.AdError.GetMessage();
+//             MobileAdsEventExecutor.ExecuteInUpdate(() => {
+//                 
+//                 if (this.appOpenAd != null)
+//                 {
+//                     this.appOpenAd.Destroy();
+//                     this.appOpenAd = null;
+//                 }
+//             });
+//         };
+//         this.appOpenAd.OnAdDidPresentFullScreenContent += (sender, args) =>
+//         {
+//             isShowingAppOpenAd = true;
+//             MobileAdsEventExecutor.ExecuteInUpdate(() => {
+//                 Debug.Log("AppOpenAd presented.");
+//             });
+//         };
+//         this.appOpenAd.OnAdDidRecordImpression += (sender, args) =>
+//         {
+//             MobileAdsEventExecutor.ExecuteInUpdate(() => {
+//                 Debug.Log("AppOpenAd recorded an impression.");
+//             });
+//         };
+//         this.appOpenAd.OnPaidEvent += (sender, args) =>
+//         {
+//             string currencyCode = args.AdValue.CurrencyCode;
+//             long adValue = args.AdValue.Value;
+//             string suffix = "AppOpenAd received a paid event.";
+//             MobileAdsEventExecutor.ExecuteInUpdate(() => {
+//                 string msg = string.Format("{0} (currency: {1}, value: {2}", suffix, currencyCode, adValue);
+//                 
+//             });
+//         };
+//         appOpenAd.Show();
+//     }
 
     #endregion
 
