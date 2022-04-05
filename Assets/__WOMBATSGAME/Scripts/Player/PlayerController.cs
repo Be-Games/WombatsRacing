@@ -96,6 +96,8 @@ public class PlayerController : MonoBehaviour
                     
                     //Other Effects
                     PlayercarVisual.transform.GetChild(0).GetChild(2).GetChild(2).GetChild(0).gameObject.SetActive(true);            //CAR LIGHTS
+                    
+                    Debug.Log("Break");
                 }
 
                 if (gameControlsClass.gestureState == GameControls.GestureState.Release)                            //Release Breaks
