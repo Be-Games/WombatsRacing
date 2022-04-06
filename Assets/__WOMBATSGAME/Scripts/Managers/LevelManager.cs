@@ -61,7 +61,8 @@ public class LevelManager : MonoBehaviour
     
     [Header("Level Speeds")]
   [Range(10,15)]  public float boostSpeed;
-    [Range(6,9)] public float normalSpeed;
+    [Range(6,20)] public float normalSpeed;
+    public float singleLapDistance;
     
 
     [Header("CountDownTimer Settings")]
@@ -170,6 +171,11 @@ public class LevelManager : MonoBehaviour
         
         currentPlayerCarModel.transform.GetChild(3).DOScale(new Vector3(1f,1f,1f), 1f).SetEase(Ease.OutBounce);
         
+    }
+
+    public void Vibrate()
+    {
+        Handheld.Vibrate();
     }
 
     private void Update()
